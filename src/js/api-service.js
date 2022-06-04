@@ -20,17 +20,16 @@ export default class ApiService {
     this.page = 1;
   }
 
-  fetchApi() {
-    return axios.get(`${BASE_URL}?key=${API_KEY}&q=${this.searchQuery}&page=${this.page}&${options}`)
-      .then(response => {
+  async fetchApi() {
+    const response = await axios.get(`${BASE_URL}?key=${API_KEY}&q=${this.searchQuery}&page=${this.page}&${options}`);
+    const data = await response.data;
         if (this.page === 1 && response.data.totalHits > 1) {
           Notiflix.Notify.success(`Hooray! We found ${response.data.totalHits} images.`);
         }
 
         this.page += 1;
 
-        return response.data;
-      });
+        return data;
   }
 
   resertPage() {

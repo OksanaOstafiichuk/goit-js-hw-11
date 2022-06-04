@@ -28,14 +28,17 @@ function onSearchBtn(evt) {
     }
 
     apiService.resertPage();
-    apiService.fetchApi().then(({ hits }) => {
-        clearGallery();
-        renderGallery({ hits });
-    });
+    fetchGallery();
+    clearGallery();
+}
+
+async function fetchGallery() {
+    const { hits } = await apiService.fetchApi();
+    renderGallery({ hits });
 }
 
 function onloadMoreBtn(evt) {
-    apiService.fetchApi().then(renderGallery);
+    fetchGallery();
     lightbox.refresh();
     openImages()
 }
