@@ -69,7 +69,7 @@ button {
     flex-direction: column;
 }
 
-.load-more.is-hidden {
+.is-hidden {
     display: none;
 }
 

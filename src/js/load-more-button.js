@@ -1,5 +1,5 @@
 export default class LoadMoreBtn {
-    constructor() {
+  constructor() {
     this.refs = this.getRefs();
   }
 
